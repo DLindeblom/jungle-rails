@@ -19,9 +19,9 @@
   <% else %>
 
   <div>
-  <element class="soldout">
+  <p class="soldout">
   Sold Out
-  </element>
+  </p>
 
   <%= button_to add_item_cart_path(product_id: product.id), class: 'btn', :disabled => true,
   method: :post  do %>
