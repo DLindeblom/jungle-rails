@@ -19,6 +19,11 @@ Rails.application.routes.draw do
     resources :categories, except: [:destroy]
   end
 
+  get 'users/new' => 'users#new', as: :new_user
+  
+	post 'users' => 'users#create'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
