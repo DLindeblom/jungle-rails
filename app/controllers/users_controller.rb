@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user.email.downcase!
     
     if @user.save
+      session[:user_id] = @user.id
       # If user saves in the db successfully:
       flash[:notice] = "Account created successfully!"
       redirect_to root_path
@@ -28,5 +29,5 @@ private
     # that can be submitted by a form to the user model #=> require(:user)
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
-  
+
 end
