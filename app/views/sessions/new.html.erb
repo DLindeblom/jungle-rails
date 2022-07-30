@@ -1,14 +1,18 @@
-<h1>Log In</h1>
+<section class="form">
+<h1 class="header">Log In</h1>
 <%= form_for :login do |f| %>
-  <div>
+  <div class="card">
+  <div class="card-body"> 
+  <div class="mb-3">
     <%= f.label :email %>
-    <%= f.text_field :email, autofocus: true %>
+    <%= f.text_field :email, { autofocus: true, class: "form-control" } %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, { class: "form-control" }%>
   </div>
   <div>
-    <%= f.submit "Log In" %>
+    <%= f.submit "Log In", class: "btn btn-primary" %>
   </div>
 <% end %>
+</section>
