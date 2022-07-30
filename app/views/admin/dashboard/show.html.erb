@@ -1,8 +1,33 @@
+<section class="admin-products-new">
 
-<h2>
-The number of products currently being sold is: <%= @num_of_products %>
-</h2>
+  <header class="page-header">
+    <h2>Dashboard</h2>
+  </header>
 
-<h2>
-The number of categories displaying products is: <%= @num_of_categories %>
-</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <h4>Category</h4>
+        </td>
+        <td>
+          <%= @num_of_categories %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h4>Product</h4>
+        </td>
+        <td>
+          <%= @num_of_products %>
+        </td>
+    </tr>
+    </tbody>
+  </table>
+</section>
