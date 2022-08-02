@@ -4,6 +4,17 @@
   <%= form_for @user, class: "form" do |f| %>
     <div class="card">
       <div class="card-body"> 
+
+      <% if f.object.errors.any? %>
+        <div class="alert alert-danger">
+          <strong>The following errors prevented saving:</strong>
+          <ul>
+            <% @user.errors.full_messages.each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
     
         <div class="mb-3">
           <%= f.label :first_name %>
