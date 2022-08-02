@@ -60,5 +60,39 @@ RSpec.describe User, type: :model do
       expect("Password is too short (minimum is 5 characters)").to be_present
     end
 
+    it "should not save if there is whitespace" do
+      @user.email = " d@l.com"
+      expect(@user).to_not be_valid
+    end
+    
+  end
+
+  describe '.authenticate_with_credentials' do
+    
+    it "should login a user if they have valid credentials" do
+      valid_user = User.authenticate_with_credentials("d@l.com", "12345")
+      expect(valid_user).to eq(@user)
+    end
+
+    it "should not login user if email is incorrect" do
+      valid_user = User.authenticate_with_credentials("da@l.com", "12345")
+      expect(valid_user).to_not eq(@user)
+    end
+
+    it "should not login user if password is incorrect" do
+      valid_user = User.authenticate_with_credentials("d@l.com", "123456")
+      expect(valid_user).to_not eq(@user)
+    end
+
+    it "should login user if letters are capitalized" do
+      valid_user = User.authenticate_with_credentials("D@L.com", "12345")
+      expect(valid_user).to eq(@user)
+    end
+
+    it "should login user there is whitspace in the email" do
+      valid_user = User.authenticate_with_credentials("    d@l.com    ", "12345")
+      expect(valid_user).to eq(@user)
+    end    
+      
   end
 end
